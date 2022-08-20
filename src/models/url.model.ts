@@ -1,8 +1,9 @@
-import mongoose from 'mongoose'
 import generateId from '../utils/generateId'
+import { model, Schema, Types } from 'mongoose'
 
-const shortUrlSchema = new mongoose.Schema(
+const shortUrlSchema = new Schema(
   {
+    user: { required: true, type: Types.ObjectId, ref: 'user' },
     fullUrl: {
       type: String,
       required: true
@@ -18,4 +19,4 @@ const shortUrlSchema = new mongoose.Schema(
   }
 )
 
-export default mongoose.model('UrlShorter', shortUrlSchema)
+export default model('url', shortUrlSchema)
