@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: build
         run: |
-          echo $PWD
-          ls
-          bash scripts/github/build.sh
+          chmod +x "${GITHUB_WORKSPACE}/scripts/github/build.sh"
+          bash ./scripts/github/build.sh
 
       - name: test
         run: bash ./scripts/github/test.sh
