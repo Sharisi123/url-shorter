@@ -10,7 +10,9 @@ jobs:
 
     steps:
       - name: build
-        run: bash ./scripts/github/build.sh
+        run: |
+          echo pwd
+          bash ./scripts/github/build.sh
 
       - name: test
         run: bash ./scripts/github/test.sh
