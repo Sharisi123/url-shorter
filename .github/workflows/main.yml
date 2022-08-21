@@ -10,8 +10,11 @@ jobs:
 
     steps:
       - name: build
+        env:
+          CI: false
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/scripts/github/build.sh"
+          git config --global user.name ${GITHUB_ACTOR}
+          git config --global user.email "nasir1231011@gmail.com"
           bash ./scripts/github/build.sh
 
       - name: test
