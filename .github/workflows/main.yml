@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: build
         run: |
-          echo pwd
-          bash ./scripts/github/build.sh
+          echo $PWD
+          bash scripts/github/build.sh
 
       - name: test
         run: bash ./scripts/github/test.sh
