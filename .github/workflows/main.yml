@@ -1,0 +1,16 @@
+name: CI/CD Develop
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: build
+        run: bash ./scripts/github/build.sh
+
+      - name: test
+        run: bash ./scripts/github/test.sh
