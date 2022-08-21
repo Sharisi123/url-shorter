@@ -12,6 +12,7 @@ jobs:
       - name: build
         run: |
           echo $PWD
+          ls
           bash scripts/github/build.sh
 
       - name: test
