@@ -25,7 +25,7 @@ export const getUserShortUrls = async (req: Request, res: Response) => {
     else res.status(404).send('No records were found, please try again')
   } catch (err) {
     console.error(err)
-    res.status(500).json('Server error, please try again')
+    res.status(500).json('Server error, please try again or notify your system administrator')
   }
 }
 
@@ -34,7 +34,7 @@ export const createShortUrl = async (req: Request, res: Response) => {
     const { fullUrl } = req.body
 
     if (!isValidHttpUrl(fullUrl)) {
-      res.status(401).json({ msg: 'Wrong url' })
+      res.status(401).json({ msg: 'Wrong url, please try another' })
       return
     }
     let shortedUrlRecord = await Url.findOne({ fullUrl })
@@ -47,6 +47,6 @@ export const createShortUrl = async (req: Request, res: Response) => {
     res.json(shortedUrlRecord)
   } catch (err) {
     console.error(err)
-    res.status(500).json('Server error')
+    res.status(500).json('Server error, please try againor notify your system administrator ')
   }
 }

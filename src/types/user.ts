@@ -5,3 +5,9 @@ export interface IUser {
   _id: Types.ObjectId
   isActivated: boolean
 }
+
+export interface IUrl {
+  name: string
+  id: string | number
+  expireDate: Date
+}
