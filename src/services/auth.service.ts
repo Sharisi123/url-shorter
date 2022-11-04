@@ -14,7 +14,7 @@ class UserService {
       const errors = validationResult(req) as any
 
       if (!errors.isEmpty()) {
-        return next(ApiError.BadRequest('Validation error', errors.array()))
+        return next(ApiError.BadRequest('Validation error, something were wrong', errors.array()))
       }
 
       const { email, password } = req.body
@@ -62,11 +62,11 @@ class UserService {
       const { email, password } = req.body
       const user = await userModel.findOne({ email })
       if (!user) {
-        throw ApiError.BadRequest('User with this email was not found')
+        throw ApiError.BadRequest('User with this email was not found, please try again')
       }
       const isPassEquals = await bcrypt.compare(password, user.password)
       if (!isPassEquals) {
-        throw ApiError.BadRequest('Invalid password')
+        throw ApiError.BadRequest('Invalid password, please try again')
       }
       const tokens = tokenService.generateTokens({ ...user })
 
