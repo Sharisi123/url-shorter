@@ -1,5 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
 const generateId = () => {
-  return uuidv4()
+  return Math.random().toString(36).slice(-8)
 }
 export default generateId
