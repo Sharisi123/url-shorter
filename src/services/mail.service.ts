@@ -21,7 +21,7 @@ class MailService {
     }
   }
 
-  async sendActivationMail(to: string, link: string) {
+  async sendActivationMail(to: string, userLink: string) {
     if (!this.transporter) return console.error('no transporter')
     try {
       await this.transporter.sendMail({
