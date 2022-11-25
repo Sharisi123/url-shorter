@@ -9,7 +9,7 @@ class MailService {
     try {
       this.transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 0,
+        port: Number(process.env.SMTP_PORT) || 5001,
         secure: false,
         auth: {
           user: process.env.SMTP_USER,
@@ -21,7 +21,7 @@ class MailService {
     }
   }
 
-  async sendActivationMail(to: string, link: string) {
+  async sendActivationMail(to: string, userLink: string) {
     if (!this.transporter) return console.error('no transporter')
     try {
       await this.transporter.sendMail({
@@ -30,11 +30,11 @@ class MailService {
         subject: 'Account activation on: ' + process.env.API_URL,
         text: '',
         html: `
-                      <div>
-                          <h1>To activate, follow the link</h1>
-                          <a href="${link}">${link}</a>
-                      </div>
-                  `
+          <div>
+            <h1>To activate, follow the link</h1>
+              <a href="${link}">${link}</a>
+          </div>
+        `
       })
     } catch (e) {
       console.error(e)
